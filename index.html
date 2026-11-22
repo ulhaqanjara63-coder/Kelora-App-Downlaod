@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelora ID — Teman Digital Pengelolaan Kelasmu</title>
+<meta name="description" content="Kelora ID membantu pengelolaan administrasi dan aktivitas kelas secara praktis, terorganisir, dan terintegrasi. Unduh aplikasi Android sekarang.">
+<meta name="theme-color" content="#071B52">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#071B52;--navy2:#102D78;--royal:#064CEB;--electric:#087AFF;--cyan:#20C8ED;--lcyan:#DDF8FF;--bg:#F3F7FF;--tx:#17233D;--tx2:#64748B;
+--grad:linear-gradient(120deg,#064CEB 0%,#087AFF 50%,#20C8ED 100%);--r:22px;--sh:0 10px 30px rgba(7,27,82,.08);
+--font:"Plus Jakarta Sans",Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--font);color:var(--tx);background:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+section{padding:96px 0}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--royal);background:var(--lcyan);padding:6px 14px;border-radius:99px;margin-bottom:16px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--navy)}
+.sub{color:var(--tx2);font-size:1.075rem;max-width:620px;margin-top:14px}
+.head{text-align:center;margin-bottom:56px}.head .sub{margin-inline:auto}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 .98rem var(--font);padding:14px 26px;border-radius:99px;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn svg{width:20px;height:20px}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(8,122,255,.35)}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(8,122,255,.45)}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+header.solid{background:rgba(7,27,82,.96);box-shadow:0 4px 24px rgba(7,27,82,.25);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;color:#fff}
+.brand img{width:34px;height:34px;background:#fff;border-radius:10px;padding:5px}
+.brand b{color:var(--cyan);font-weight:800}
+nav ul{display:flex;gap:6px;list-style:none;align-items:center}
+nav a.l{color:rgba(255,255,255,.85);font-weight:600;font-size:.94rem;padding:8px 14px;border-radius:99px;transition:.2s}
+nav a.l:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav .btn{padding:10px 20px;font-size:.9rem}
+.burger{display:none;background:none;border:0;color:#fff;width:44px;height:44px;cursor:pointer}
+.burger svg{width:26px;height:26px}
+
+/* hero */
+.hero{background:radial-gradient(900px 500px at 85% 20%,rgba(32,200,237,.35),transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy2) 55%,#0a3fb5 100%);color:#fff;padding:140px 0 110px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-160px;bottom:-200px;width:520px;height:520px;border-radius:50%;border:60px solid rgba(32,200,237,.08)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.7rem)}
+.hero h1 span{background:linear-gradient(120deg,#6fd8ff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:rgba(255,255,255,.82);font-size:1.1rem;margin:22px 0 34px;max-width:520px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.meta{display:flex;gap:22px;margin-top:34px;color:rgba(255,255,255,.7);font-size:.88rem;flex-wrap:wrap}
+.meta span{display:flex;align-items:center;gap:8px}.meta svg{width:18px;height:18px;color:var(--cyan)}
+.stage{position:relative;display:grid;place-items:center;min-height:540px}
+.phone{width:min(270px,70vw);aspect-ratio:9/19;background:#0b1530;border-radius:40px;padding:10px;box-shadow:0 40px 70px rgba(0,0,0,.4),inset 0 0 0 2px #25346b;position:relative;animation:float 6s ease-in-out infinite}
+.phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:70px;height:18px;background:#0b1530;border-radius:12px;z-index:3}
+.screen{width:100%;height:100%;border-radius:31px;overflow:hidden;background:var(--bg);position:relative}
+.screen img.shot{width:100%;height:100%;object-fit:cover;object-position:top}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px;background:linear-gradient(180deg,#fff,var(--bg));color:var(--tx2);font-size:.72rem}
+.ph img{width:76px;height:76px}
+.ph strong{color:var(--navy);font-size:.9rem}
+.ph code{background:var(--lcyan);color:var(--navy2);padding:2px 8px;border-radius:6px;font-size:.68rem;word-break:break-all}
+.fc{position:absolute;background:#fff;color:var(--tx);border-radius:16px;padding:12px 16px;box-shadow:0 14px 34px rgba(7,27,82,.28);display:flex;align-items:center;gap:12px;font-size:.82rem;animation:float 5s ease-in-out infinite;z-index:4}
+.fc i{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#fff;flex:none}
+.fc i svg{width:20px;height:20px}
+.fc b{display:block;font-size:.9rem;color:var(--navy)}.fc small{color:var(--tx2)}
+.fc1{top:12%;left:-4%;animation-delay:-1s}.fc2{top:46%;right:-6%;animation-delay:-2.5s}.fc3{bottom:8%;left:2%;animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+/* about / showcase */
+.about{background:var(--bg)}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about ul{list-style:none;margin-top:26px;display:grid;gap:14px}
+.about li{display:flex;gap:12px;align-items:flex-start}
+.chk{flex:none;width:26px;height:26px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;margin-top:1px}
+.chk svg{width:14px;height:14px}
+.illus{background:#fff;border-radius:28px;padding:20px;box-shadow:var(--sh);border:1px solid #e3ebfb}
+.illus img{border-radius:18px;width:100%}
+
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.tab{font:600 .92rem var(--font);padding:10px 20px;border-radius:99px;border:1px solid #d5e1fa;background:#fff;color:var(--tx2);cursor:pointer;transition:.2s}
+.tab:hover{color:var(--royal);border-color:var(--electric)}
+.tab[aria-selected=true]{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(8,122,255,.3)}
+.showcase{background:var(--grad);border-radius:32px;padding:50px 30px;display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center;color:#fff;overflow:hidden}
+.showcase .phone{animation:none;width:min(240px,64vw)}
+.showcase h3{font-size:1.7rem;margin-bottom:12px}
+.showcase p{color:rgba(255,255,255,.9);max-width:460px}
+.badge{display:inline-block;margin-top:18px;font-size:.78rem;background:rgba(255,255,255,.18);padding:6px 14px;border-radius:99px}
+
+/* features */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid #e3ebfb;border-radius:var(--r);padding:30px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.card::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(8,122,255,.16);border-color:#bcd6ff}
+.card:hover::before{transform:scaleX(1)}
+.ic{width:56px;height:56px;border-radius:18px;background:var(--lcyan);display:grid;place-items:center;color:var(--royal);margin-bottom:20px;transition:.3s}
+.card:hover .ic{background:var(--grad);color:#fff}
+.ic svg{width:28px;height:28px}
+.card h3{font-size:1.05rem;letter-spacing:.04em;color:var(--navy);margin-bottom:8px}
+.card p{color:var(--tx2);font-size:.96rem}
+
+/* why */
+.why{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff}
+.why h2{color:#fff}.why .sub{color:rgba(255,255,255,.75)}
+.why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.why .eyebrow{background:rgba(32,200,237,.16);color:var(--cyan)}
+.perks{display:grid;gap:14px;margin-top:30px}
+.perk{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:16px 20px;border-radius:18px;transition:.25s}
+.perk:hover{background:rgba(255,255,255,.12);transform:translateX(6px)}
+.perk .chk{width:30px;height:30px}
+.why .illus{background:#fff}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative}
+.step{text-align:center;padding:10px 20px}
+.num{width:68px;height:68px;margin:0 auto 20px;border-radius:50%;background:var(--grad);color:#fff;font-size:1.6rem;font-weight:800;display:grid;place-items:center;box-shadow:0 10px 24px rgba(8,122,255,.35);position:relative;z-index:1}
+.steps::before{content:"";position:absolute;top:44px;left:17%;right:17%;border-top:3px dashed #bcd6ff}
+.step h3{font-size:1.1rem;color:var(--navy);margin-bottom:8px}.step p{color:var(--tx2);font-size:.96rem}
+
+/* download */
+.dl{background:var(--bg)}
+.dlbox{background:var(--grad);border-radius:36px;padding:60px 40px;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.dlbox::after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.1)}
+.dlbox h2{color:#fff}.dlbox p{color:rgba(255,255,255,.9);margin:14px 0 28px;max-width:480px}
+.btn-white{background:#fff;color:var(--royal);box-shadow:0 10px 26px rgba(7,27,82,.25);font-size:1.05rem;padding:16px 32px}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(7,27,82,.35)}
+.btn-white[aria-disabled=true]{opacity:.6;pointer-events:none}
+.note{font-size:.84rem;margin-top:16px;color:rgba(255,255,255,.85);display:flex;gap:8px;align-items:flex-start;max-width:480px}
+.note svg{width:18px;height:18px;flex:none;margin-top:3px}
+.info{background:#fff;color:var(--tx);border-radius:24px;padding:10px 26px;box-shadow:0 20px 44px rgba(7,27,82,.25);position:relative;z-index:1}
+.row{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid #edf2fc;font-size:.95rem}
+.row:last-child{border:0}.row span{color:var(--tx2)}.row b{color:var(--navy);text-align:right}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:#0a8f5b;font-weight:700}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#16c784}
+.status.off{color:#c2410c}.status.off::before{background:#f97316}
+
+/* footer */
+footer{background:var(--navy);color:rgba(255,255,255,.72);padding:64px 0 28px;font-size:.93rem}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a:hover{color:var(--cyan)}
+footer .brand{margin-bottom:14px}
+footer p{max-width:320px}
+.copy{padding-top:24px;text-align:center;font-size:.85rem}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* responsive */
+@media(max-width:960px){
+ section{padding:72px 0}
+ .hero{padding:120px 0 80px}
+ .hero .wrap,.about .wrap,.why .wrap,.dlbox{grid-template-columns:1fr}
+ .hero .wrap{text-align:center}.hero p{margin-inline:auto}.cta,.meta{justify-content:center}
+ .stage{min-height:480px}
+ .fc1{left:2%}.fc2{right:0}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .showcase{grid-template-columns:1fr;text-align:center;justify-items:center;padding:40px 22px}
+ .why .illus{order:-1}
+ .fg{grid-template-columns:1fr 1fr}
+ .burger{display:grid;place-items:center}
+ nav ul{position:fixed;inset:70px 0 auto;background:var(--navy);flex-direction:column;padding:12px 20px 24px;gap:4px;align-items:stretch;transform:translateY(-12px);opacity:0;visibility:hidden;transition:.3s}
+ nav ul.open{transform:none;opacity:1;visibility:visible}
+ nav a.l{display:block;padding:14px}
+ nav li:last-child{margin-top:8px}nav li:last-child .btn{width:100%;justify-content:center}
+ header.open{background:var(--navy)}
+}
+@media(max-width:620px){
+ .grid,.steps{grid-template-columns:1fr}.steps::before{display:none}
+ .fg{grid-template-columns:1fr}
+ .dlbox{padding:40px 22px;border-radius:28px}
+ .fc{font-size:.74rem;padding:9px 12px}.fc i{width:32px;height:32px}
+ .fc1{left:-2%;top:6%}.fc2{right:-2%}.fc3{left:0}
+ .btn{width:100%;justify-content:center}.cta{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *{animation:none!important;transition-duration:.01ms!important}
+ .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+<symbol id="i-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6M9 11h3"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="i-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="m5 17 3-12h2l-1 5h6l-1-5h2l3 12z"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M16 13h2"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+<symbol id="i-android" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</defs>
+</svg>
+
+<header id="top">
+ <div class="wrap nav">
+  <a class="brand" href="#beranda" aria-label="Kelora ID"><img src="assets/logo-kelora.png" alt="" width="34" height="34">Kelora<b>ID</b></a>
+  <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><svg><use href="#i-menu"/></svg></button>
+  <nav aria-label="Navigasi utama">
+   <ul id="menu">
+    <li><a class="l" href="#beranda">Beranda</a></li>
+    <li><a class="l" href="#tentang">Tentang</a></li>
+    <li><a class="l" href="#fitur">Fitur</a></li>
+    <li><a class="l" href="#preview">Preview Aplikasi</a></li>
+    <li><a class="btn btn-grad" href="#download"><svg><use href="#i-dl"/></svg>Download</a></li>
+   </ul>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="beranda">
+ <div class="wrap">
+  <div class="rv">
+   <span class="eyebrow" style="background:rgba(32,200,237,.16);color:var(--cyan)">Aplikasi Android</span>
+   <h1>Kenali Kelora ID, <span>Teman Digital Pengelolaan Kelasmu.</span></h1>
+   <p>Kelora ID merupakan aplikasi digital yang membantu pengelolaan administrasi dan aktivitas kelas secara lebih praktis, terorganisir, dan terintegrasi.</p>
+   <div class="cta">
+    <a class="btn btn-grad" href="#download"><svg><use href="#i-dl"/></svg>Download Aplikasi</a>
+    <a class="btn btn-ghost" href="#fitur">Jelajahi Fitur</a>
+   </div>
+   <div class="meta">
+    <span><svg><use href="#i-android"/></svg>Android 8.0+</span>
+    <span><svg><use href="#i-chk"/></svg>Format APK</span>
+   </div>
+  </div>
+  <div class="stage rv d2">
+   <div class="phone"><div class="screen" data-shot="assets/screenshots/beranda.png"></div></div>
+   <div class="fc fc1"><i><svg><use href="#i-user"/></svg></i><div><b>Absensi</b><small>Kehadiran siswa</small></div></div>
+   <div class="fc fc2"><i><svg><use href="#i-cal"/></svg></i><div><b>Jadwal</b><small>Pelajaran &amp; kegiatan</small></div></div>
+   <div class="fc fc3"><i><svg><use href="#i-wallet"/></svg></i><div><b>Uang Kas</b><small>Pemasukan &amp; pengeluaran</small></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="about" id="tentang">
+ <div class="wrap">
+  <div class="rv">
+   <span class="eyebrow">Tentang Kelora ID</span>
+   <h2>Semua Aktivitas Kelas dalam Satu Aplikasi</h2>
+   <p class="sub">Kelola berbagai kebutuhan kelas melalui satu platform digital yang mudah digunakan.</p>
+   <ul>
+    <li><span class="chk"><svg><use href="#i-chk"/></svg></span>Absensi, pengajuan izin, jadwal, piket, kas, dan pengumuman di satu tempat.</li>
+    <li><span class="chk"><svg><use href="#i-chk"/></svg></span>Dirancang untuk siswa, pengurus kelas, dan wali kelas.</li>
+    <li><span class="chk"><svg><use href="#i-chk"/></svg></span>Tampilan bersih dan ringan, nyaman dipakai setiap hari.</li>
+   </ul>
+  </div>
+  <div class="illus rv d2"><img src="assets/ilustrasi-siswa.png" alt="Ilustrasi siswa berdiskusi bersama di kelas" width="630" height="477" loading="lazy"></div>
+ </div>
+</section>
+
+<section id="preview">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">Preview Aplikasi</span>
+   <h2>Lihat Tampilan Kelora ID</h2>
+   <p class="sub">Jelajahi halaman-halaman utama aplikasi.</p>
+  </div>
+  <div class="tabs rv" role="tablist" aria-label="Halaman aplikasi" id="tabs"></div>
+  <div class="showcase rv" id="showcase">
+   <div class="phone"><div class="screen" id="sc-screen"></div></div>
+   <div><h3 id="sc-title"></h3><p id="sc-desc"></p><span class="badge" id="sc-badge"></span></div>
+  </div>
+ </div>
+</section>
+
+<section id="fitur" style="background:var(--bg)">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">Fitur Utama</span>
+   <h2>Semua yang Dibutuhkan Kelasmu</h2>
+   <p class="sub">Enam fitur inti untuk mendukung administrasi dan aktivitas kelas sehari-hari.</p>
+  </div>
+  <div class="grid">
+   <article class="card rv"><div class="ic"><svg><use href="#i-user"/></svg></div><h3>ABSENSI</h3><p>Pengelolaan kehadiran siswa secara digital.</p></article>
+   <article class="card rv d1"><div class="ic"><svg><use href="#i-file"/></svg></div><h3>PENGAJUAN</h3><p>Pengelolaan izin, sakit, dan dispensasi siswa.</p></article>
+   <article class="card rv d2"><div class="ic"><svg><use href="#i-cal"/></svg></div><h3>JADWAL</h3><p>Informasi jadwal pelajaran dan kegiatan kelas.</p></article>
+   <article class="card rv"><div class="ic"><svg><use href="#i-brush"/></svg></div><h3>PIKET</h3><p>Pengelolaan jadwal piket dan pemantauan pelaksanaan tugas.</p></article>
+   <article class="card rv d1"><div class="ic"><svg><use href="#i-wallet"/></svg></div><h3>UANG KAS</h3><p>Pencatatan pembayaran, pemasukan, dan pengeluaran kas kelas.</p></article>
+   <article class="card rv d2"><div class="ic"><svg><use href="#i-bell"/></svg></div><h3>PENGUMUMAN</h3><p>Penyampaian informasi dari wali kelas dan pengurus kelas.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="why" id="keunggulan">
+ <div class="wrap">
+  <div class="rv">
+   <span class="eyebrow">Keunggulan</span>
+   <h2>Mengapa Menggunakan Kelora ID?</h2>
+   <div class="perks">
+    <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Administrasi kelas lebih terorganisir.</div>
+    <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Informasi kelas lebih mudah diakses.</div>
+    <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Pengelolaan aktivitas lebih praktis.</div>
+    <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Mendukung komunikasi dan koordinasi kelas.</div>
+    <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Data terintegrasi melalui sistem aplikasi.</div>
+   </div>
+  </div>
+  <div class="illus rv d2"><img src="assets/ilustrasi-siswa.png" alt="Siswa belajar dan berkolaborasi" width="630" height="477" loading="lazy"></div>
+ </div>
+</section>
+
+<section id="cara">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">Cara Penggunaan</span>
+   <h2>Mulai dalam Tiga Langkah</h2>
+  </div>
+  <div class="steps">
+   <div class="step rv"><div class="num">1</div><h3>Download aplikasi</h3><p>Unduh aplikasi Kelora ID melalui tombol di bagian bawah halaman ini.</p></div>
+   <div class="step rv d1"><div class="num">2</div><h3>Masuk dengan akun</h3><p>Masuk menggunakan akun yang telah disediakan.</p></div>
+   <div class="step rv d2"><div class="num">3</div><h3>Gunakan fitur</h3><p>Gunakan fitur sesuai kebutuhan dan hak akses pengguna.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="dl" id="download">
+ <div class="wrap">
+  <div class="dlbox rv">
+   <div style="position:relative;z-index:1">
+    <h2>Mulai Gunakan Kelora ID Sekarang!</h2>
+    <p>Download aplikasi Kelora ID dan nikmati kemudahan pengelolaan aktivitas kelas melalui perangkat Android.</p>
+    <a class="btn btn-white" id="dl-btn" href="downloads/Kelora-ID.apk" download="Kelora-ID.apk"><svg><use href="#i-dl"/></svg>DOWNLOAD APK</a>
+    <p class="note"><svg><use href="#i-info"/></svg><span>Instalasi dilakukan pada perangkat Android. Jika diminta, izinkan “Instal dari sumber ini” di pengaturan browser atau pengelola file Anda.</span></p>
+   </div>
+   <div class="info">
+    <div class="row"><span>Nama aplikasi</span><b>Kelora ID</b></div>
+    <div class="row"><span>Platform</span><b>Android 8.0 (API 26) ke atas</b></div>
+    <div class="row"><span>Versi aplikasi</span><b>1.0.1</b></div>
+    <div class="row"><span>Ukuran APK</span><b id="dl-size">22,4 MB</b></div>
+    <div class="row"><span>Format</span><b>APK</b></div>
+    <div class="row"><span>Status file</span><b><span class="status" id="dl-status">Tersedia</span></b></div>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="fg">
+   <div>
+    <a class="brand" href="#beranda"><img src="assets/logo-kelora.png" alt="" width="34" height="34">Kelora<b>ID</b></a>
+    <p>Teman digital pengelolaan kelas: absensi, jadwal, piket, kas, dan pengumuman dalam satu aplikasi.</p>
+   </div>
+   <div><h4>Navigasi</h4><ul><li><a href="#beranda">Beranda</a></li><li><a href="#tentang">Tentang</a></li><li><a href="#fitur">Fitur</a></li><li><a href="#preview">Preview Aplikasi</a></li><li><a href="#download">Download</a></li></ul></div>
+   <div><h4>Fitur</h4><ul><li>Absensi</li><li>Pengajuan</li><li>Jadwal</li><li>Piket</li><li>Uang Kas</li><li>Pengumuman</li></ul></div>
+   <div><h4>Platform</h4><ul><li>Android 8.0+</li><li>Format APK</li><li><a href="#download">Unduh aplikasi</a></li></ul></div>
+  </div>
+  <p class="copy">© <span id="yr">2026</span> Kelora ID. Hak cipta dilindungi.</p>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var $=function(s,c){return (c||document).querySelector(s)};
+
+ // Header & mobile menu
+ var hd=$('#top'),bg=$('#burger'),mn=$('#menu');
+ function onScroll(){hd.classList.toggle('solid',window.scrollY>30)}
+ onScroll();addEventListener('scroll',onScroll,{passive:true});
+ function setMenu(o){mn.classList.toggle('open',o);hd.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Tutup menu':'Buka menu');bg.innerHTML='<svg><use href="#'+(o?'i-x':'i-menu')+'"/></svg>'}
+ bg.addEventListener('click',function(){setMenu(!mn.classList.contains('open'))});
+ mn.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+ addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+ // Screenshot slot: uses real file if present, otherwise a clearly-labelled placeholder
+ function fillScreen(el,src,label){
+  el.innerHTML='';
+  var ph=document.createElement('div');ph.className='ph';
+  ph.innerHTML='<img src="assets/logo-kelora.png" alt=""><strong>'+label+'</strong><span>Screenshot belum ditambahkan</span><code>'+src+'</code>';
+  el.appendChild(ph);
+  var im=new Image();im.className='shot';im.alt='Tampilan halaman '+label+' aplikasi Kelora ID';
+  im.onload=function(){el.innerHTML='';el.appendChild(im);el.dataset.real='1'};
+  im.src=src;
+ }
+
+ // Showcase tabs
+ var pages=[
+  {k:'beranda',t:'Dashboard Beranda',d:'Ringkasan aktivitas kelas dalam satu tampilan awal.'},
+  {k:'absensi',t:'Halaman Absensi',d:'Catat dan pantau kehadiran siswa secara digital.'},
+  {k:'jadwal',t:'Halaman Jadwal',d:'Lihat jadwal pelajaran dan kegiatan kelas dengan mudah.'},
+  {k:'piket',t:'Halaman Piket',d:'Kelola jadwal piket dan pantau pelaksanaan tugas.'},
+  {k:'kas',t:'Halaman Uang Kas',d:'Catat pembayaran, pemasukan, dan pengeluaran kas kelas.'},
+  {k:'pengumuman',t:'Halaman Pengumuman',d:'Terima informasi dari wali kelas dan pengurus kelas.'}
+ ];
+ var tabs=$('#tabs');
+ pages.forEach(function(p,i){
+  var b=document.createElement('button');b.className='tab';b.role='tab';b.textContent=p.t.replace('Halaman ','');
+  b.setAttribute('aria-selected',i===0);b.addEventListener('click',function(){show(i)});tabs.appendChild(b);
+ });
+ function show(i){
+  var p=pages[i];
+  [].forEach.call(tabs.children,function(b,j){b.setAttribute('aria-selected',j===i)});
+  $('#sc-title').textContent=p.t;$('#sc-desc').textContent=p.d;
+  var scr=$('#sc-screen'),src='assets/screenshots/'+p.k+'.png';
+  fillScreen(scr,src,p.t);
+  var ok=new Image();ok.onload=function(){$('#sc-badge').textContent='Tampilan asli aplikasi'};
+  ok.onerror=function(){$('#sc-badge').textContent='Placeholder — screenshot belum tersedia'};ok.src=src;
+ }
+ show(0);
+ var hero=$('.screen[data-shot]');fillScreen(hero,hero.dataset.shot,'Dashboard Beranda');
+
+ // Reveal on scroll
+ var rv=document.querySelectorAll('.rv');
+ if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  rv.forEach(function(n){io.observe(n)});
+ }else rv.forEach(function(n){n.classList.add('in')});
+
+ // APK availability check (works when served over http/https)
+ var btn=$('#dl-btn'),st=$('#dl-status');
+ if(location.protocol.indexOf('http')===0){
+  fetch(btn.getAttribute('href'),{method:'HEAD'}).then(function(r){
+   if(!r.ok)throw 0;
+   var n=+r.headers.get('content-length');
+   if(n)$('#dl-size').textContent=(n/1048576).toFixed(1).replace('.',',')+' MB';
+  }).catch(function(){
+   st.textContent='File belum tersedia';st.classList.add('off');
+   btn.setAttribute('aria-disabled','true');btn.removeAttribute('download');btn.removeAttribute('href');
+  });
+ }
+ $('#yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
