@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kelora ID — Teman Digital Pengelolaan Kelasmu</title>
-<meta name="description" content="Kelora ID membantu pengelolaan administrasi dan aktivitas kelas secara praktis, terorganisir, dan terintegrasi. Unduh aplikasi Android sekarang.">
+<title>Kelora — Teman Digital Pengelolaan Kelasmu</title>
+<meta name="description" content="Kelora membantu pengelolaan administrasi dan aktivitas kelas secara praktis, terorganisir, dan terintegrasi. Unduh aplikasi Android sekarang.">
 <meta name="theme-color" content="#071B52">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +65,9 @@ nav .btn{padding:10px 20px;font-size:.9rem}
 .phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:70px;height:18px;background:#0b1530;border-radius:12px;z-index:3}
 .screen{width:100%;height:100%;border-radius:31px;overflow:hidden;background:var(--bg);position:relative}
 .screen img.shot{width:100%;height:100%;object-fit:cover;object-position:top}
+.showcase .screen[data-real]{overflow-y:auto;scrollbar-width:none}.showcase .screen[data-real]::-webkit-scrollbar{display:none}.showcase .screen[data-real] img.shot{height:auto;object-fit:initial}
+.screen[data-shot] img.shot{height:auto;object-fit:initial;animation:pan 28s ease-in-out infinite alternate;will-change:transform}
+@keyframes pan{0%,8%{transform:translateY(0)}92%,100%{transform:translateY(var(--pan,0px))}}
 .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px;background:linear-gradient(180deg,#fff,var(--bg));color:var(--tx2);font-size:.72rem}
 .ph img{width:76px;height:76px}
 .ph strong{color:var(--navy);font-size:.9rem}
@@ -213,7 +216,7 @@ footer p{max-width:320px}
 
 <header id="top">
  <div class="wrap nav">
-  <a class="brand" href="#beranda" aria-label="Kelora ID"><img src="assets/logo-kelora.png" alt="" width="34" height="34">Kelora<b>ID</b></a>
+  <a class="brand" href="#beranda" aria-label="Kelora"><img src="assets/logo-kelora.png" alt="" width="34" height="34">Kelora</a>
   <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><svg><use href="#i-menu"/></svg></button>
   <nav aria-label="Navigasi utama">
    <ul id="menu">
@@ -232,8 +235,8 @@ footer p{max-width:320px}
  <div class="wrap">
   <div class="rv">
    <span class="eyebrow" style="background:rgba(32,200,237,.16);color:var(--cyan)">Aplikasi Android</span>
-   <h1>Kenali Kelora ID, <span>Teman Digital Pengelolaan Kelasmu.</span></h1>
-   <p>Kelora ID merupakan aplikasi digital yang membantu pengelolaan administrasi dan aktivitas kelas secara lebih praktis, terorganisir, dan terintegrasi.</p>
+   <h1>Kenali Kelora, <span>Teman Digital Pengelolaan Kelasmu.</span></h1>
+   <p>Kelora merupakan aplikasi digital yang membantu pengelolaan administrasi dan aktivitas kelas secara lebih praktis, terorganisir, dan terintegrasi.</p>
    <div class="cta">
     <a class="btn btn-grad" href="#download"><svg><use href="#i-dl"/></svg>Download Aplikasi</a>
     <a class="btn btn-ghost" href="#fitur">Jelajahi Fitur</a>
@@ -245,9 +248,9 @@ footer p{max-width:320px}
   </div>
   <div class="stage rv d2">
    <div class="phone"><div class="screen" data-shot="assets/screenshots/beranda.png"></div></div>
-   <div class="fc fc1"><i><svg><use href="#i-user"/></svg></i><div><b>Absensi</b><small>Kehadiran siswa</small></div></div>
-   <div class="fc fc2"><i><svg><use href="#i-cal"/></svg></i><div><b>Jadwal</b><small>Pelajaran &amp; kegiatan</small></div></div>
-   <div class="fc fc3"><i><svg><use href="#i-wallet"/></svg></i><div><b>Uang Kas</b><small>Pemasukan &amp; pengeluaran</small></div></div>
+   <div class="fc fc1"><i><svg><use href="#i-user"/></svg></i><div><b>Absensi</b><small>Status: Belum Absen</small></div></div>
+   <div class="fc fc2"><i><svg><use href="#i-cal"/></svg></i><div><b>Jadwal</b><small>07.45 Kewirausahaan</small></div></div>
+   <div class="fc fc3"><i><svg><use href="#i-wallet"/></svg></i><div><b>Uang Kas</b><small>Iuran Rp 15.000</small></div></div>
   </div>
  </div>
 </section>
@@ -255,7 +258,7 @@ footer p{max-width:320px}
 <section class="about" id="tentang">
  <div class="wrap">
   <div class="rv">
-   <span class="eyebrow">Tentang Kelora ID</span>
+   <span class="eyebrow">Tentang Kelora</span>
    <h2>Semua Aktivitas Kelas dalam Satu Aplikasi</h2>
    <p class="sub">Kelola berbagai kebutuhan kelas melalui satu platform digital yang mudah digunakan.</p>
    <ul>
@@ -272,7 +275,7 @@ footer p{max-width:320px}
  <div class="wrap">
   <div class="head rv">
    <span class="eyebrow">Preview Aplikasi</span>
-   <h2>Lihat Tampilan Kelora ID</h2>
+   <h2>Lihat Tampilan Kelora</h2>
    <p class="sub">Jelajahi halaman-halaman utama aplikasi.</p>
   </div>
   <div class="tabs rv" role="tablist" aria-label="Halaman aplikasi" id="tabs"></div>
@@ -305,7 +308,7 @@ footer p{max-width:320px}
  <div class="wrap">
   <div class="rv">
    <span class="eyebrow">Keunggulan</span>
-   <h2>Mengapa Menggunakan Kelora ID?</h2>
+   <h2>Mengapa Menggunakan Kelora?</h2>
    <div class="perks">
     <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Administrasi kelas lebih terorganisir.</div>
     <div class="perk"><span class="chk"><svg><use href="#i-chk"/></svg></span>Informasi kelas lebih mudah diakses.</div>
@@ -325,7 +328,7 @@ footer p{max-width:320px}
    <h2>Mulai dalam Tiga Langkah</h2>
   </div>
   <div class="steps">
-   <div class="step rv"><div class="num">1</div><h3>Download aplikasi</h3><p>Unduh aplikasi Kelora ID melalui tombol di bagian bawah halaman ini.</p></div>
+   <div class="step rv"><div class="num">1</div><h3>Download aplikasi</h3><p>Unduh aplikasi Kelora melalui tombol di bagian bawah halaman ini.</p></div>
    <div class="step rv d1"><div class="num">2</div><h3>Masuk dengan akun</h3><p>Masuk menggunakan akun yang telah disediakan.</p></div>
    <div class="step rv d2"><div class="num">3</div><h3>Gunakan fitur</h3><p>Gunakan fitur sesuai kebutuhan dan hak akses pengguna.</p></div>
   </div>
@@ -336,16 +339,16 @@ footer p{max-width:320px}
  <div class="wrap">
   <div class="dlbox rv">
    <div style="position:relative;z-index:1">
-    <h2>Mulai Gunakan Kelora ID Sekarang!</h2>
-    <p>Download aplikasi Kelora ID dan nikmati kemudahan pengelolaan aktivitas kelas melalui perangkat Android.</p>
-    <a class="btn btn-white" id="dl-btn" href="downloads/Kelora-ID.apk" download="Kelora-ID.apk"><svg><use href="#i-dl"/></svg>DOWNLOAD APK</a>
+    <h2>Mulai Gunakan Kelora Sekarang!</h2>
+    <p>Download aplikasi Kelora dan nikmati kemudahan pengelolaan aktivitas kelas melalui perangkat Android.</p>
+    <a class="btn btn-white" id="dl-btn" href="downloads/Kelora.apk" download="Kelora.apk"><svg><use href="#i-dl"/></svg>DOWNLOAD APK</a>
     <p class="note"><svg><use href="#i-info"/></svg><span>Instalasi dilakukan pada perangkat Android. Jika diminta, izinkan “Instal dari sumber ini” di pengaturan browser atau pengelola file Anda.</span></p>
    </div>
    <div class="info">
-    <div class="row"><span>Nama aplikasi</span><b>Kelora ID</b></div>
+    <div class="row"><span>Nama aplikasi</span><b>Kelora</b></div>
     <div class="row"><span>Platform</span><b>Android 8.0 (API 26) ke atas</b></div>
-    <div class="row"><span>Versi aplikasi</span><b>1.0.1</b></div>
-    <div class="row"><span>Ukuran APK</span><b id="dl-size">22,4 MB</b></div>
+    <div class="row"><span>Versi aplikasi</span><b>1.0.2</b></div>
+    <div class="row"><span>Ukuran APK</span><b id="dl-size">21,2 MB</b></div>
     <div class="row"><span>Format</span><b>APK</b></div>
     <div class="row"><span>Status file</span><b><span class="status" id="dl-status">Tersedia</span></b></div>
    </div>
@@ -358,14 +361,14 @@ footer p{max-width:320px}
  <div class="wrap">
   <div class="fg">
    <div>
-    <a class="brand" href="#beranda"><img src="assets/logo-kelora.png" alt="" width="34" height="34">Kelora<b>ID</b></a>
+    <a class="brand" href="#beranda"><img src="assets/logo-kelora.png" alt="" width="34" height="34">Kelora</a>
     <p>Teman digital pengelolaan kelas: absensi, jadwal, piket, kas, dan pengumuman dalam satu aplikasi.</p>
    </div>
    <div><h4>Navigasi</h4><ul><li><a href="#beranda">Beranda</a></li><li><a href="#tentang">Tentang</a></li><li><a href="#fitur">Fitur</a></li><li><a href="#preview">Preview Aplikasi</a></li><li><a href="#download">Download</a></li></ul></div>
    <div><h4>Fitur</h4><ul><li>Absensi</li><li>Pengajuan</li><li>Jadwal</li><li>Piket</li><li>Uang Kas</li><li>Pengumuman</li></ul></div>
    <div><h4>Platform</h4><ul><li>Android 8.0+</li><li>Format APK</li><li><a href="#download">Unduh aplikasi</a></li></ul></div>
   </div>
-  <p class="copy">© <span id="yr">2026</span> Kelora ID. Hak cipta dilindungi.</p>
+  <p class="copy">© <span id="yr">2026</span> Kelora. Hak cipta dilindungi.</p>
  </div>
 </footer>
 
@@ -384,18 +387,18 @@ footer p{max-width:320px}
 
  // Screenshot slot: uses real file if present, otherwise a clearly-labelled placeholder
  function fillScreen(el,src,label){
-  el.innerHTML='';
+  el.innerHTML='';delete el.dataset.real;
   var ph=document.createElement('div');ph.className='ph';
   ph.innerHTML='<img src="assets/logo-kelora.png" alt=""><strong>'+label+'</strong><span>Screenshot belum ditambahkan</span><code>'+src+'</code>';
   el.appendChild(ph);
-  var im=new Image();im.className='shot';im.alt='Tampilan halaman '+label+' aplikasi Kelora ID';
-  im.onload=function(){el.innerHTML='';el.appendChild(im);el.dataset.real='1'};
+  var im=new Image();im.className='shot';im.alt='Tampilan halaman '+label+' aplikasi Kelora';
+  im.onload=function(){el.innerHTML='';el.appendChild(im);el.dataset.real='1';if(el.hasAttribute('data-shot')){var pan=function(){el.style.setProperty('--pan',-Math.max(im.offsetHeight-el.clientHeight,0)+'px')};pan();addEventListener('resize',pan)}};
   im.src=src;
  }
 
  // Showcase tabs
  var pages=[
-  {k:'beranda',t:'Dashboard Beranda',d:'Ringkasan aktivitas kelas dalam satu tampilan awal.'},
+  {k:'beranda',t:'Dashboard Beranda',d:'Ringkasan hari ini, menu kelas, jadwal, dan pengumuman terbaru dalam satu tampilan awal. Geser layar ponsel untuk melihat seluruh halaman.'},
   {k:'absensi',t:'Halaman Absensi',d:'Catat dan pantau kehadiran siswa secara digital.'},
   {k:'jadwal',t:'Halaman Jadwal',d:'Lihat jadwal pelajaran dan kegiatan kelas dengan mudah.'},
   {k:'piket',t:'Halaman Piket',d:'Kelola jadwal piket dan pantau pelaksanaan tugas.'},
